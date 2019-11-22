@@ -2,13 +2,13 @@
 <html>
 
 <head>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/noun.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
 </head>
 
 <body>
    <div class="container">
+      <label for="answer" name="quest" class="question"> Hvernig beygirðu <b>{{nafno}}</b> í {{sent}}? </label>
       <form action="/submit" method="POST">
-         <label for="answer" name="quest"> Hvernig beygirðu {{ nafno }} í {{ sent }} </label>
          <div class="input">
             <input type="text" name="answer" />
          </div>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <label for="answer" name="quest"> Hvernig beygirðu lýsingarorðið <b>{{ lysingaro }}</b> í {{ sent }}? </label>
+    <form action="/submit" method="POST">
+      <div class="input">
+        <input type="text" name="answer" />
+      </div>
+      <p> {{ rettsvar }} </p>
+      <input type="submit" value="Prófa" class="button" />
+    </form>
+  </div>
+</body>
+
+</html>

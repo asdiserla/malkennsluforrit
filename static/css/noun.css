@@ -1,0 +1,108 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(235, 235, 233); /* gömlu: #B6C649; #9bc633 rgb(126, 222, 233) */
+}
+
+h1 {
+  font-family: 'Calistoga', cursive;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+label {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 6px 15px;
+    font-size: 0.9rem;
+    line-height: 2rem;
+    color: #cbcbd2;
+    border: 1px solid #cbcbd2;
+    border-radius: 4px;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #000000;
+    color: #000000;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 60%;
+    max-width: 450px;
+    min-width: 300px;
+    background: white;
+    padding: 40px 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    border-radius: 5px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 160px;
+     margin: 25px auto 0px;
+     padding: 5px 10px;
+     font-size: 1rem;
+     font-weight: 200;
+     line-height: 2rem;
+     background-image: none;
+     border-radius: 4px;
+     border: none;
+     color: white;
+     background-color: #B6C649;
+     transition: all 0.4s ease 0s;
+ }
+
+.button:hover {
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 10px -50px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+/*
+.button a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.4s ease 0s;
+}
+
+.button:hover a {
+    color: #2C4251;
+    transition: all 0.4s ease 0s;
+}*/

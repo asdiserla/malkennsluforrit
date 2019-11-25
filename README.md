@@ -7,8 +7,10 @@
 <p>Leikurinn nær í random orð úr skránni ordmyndalisti.txt sem notandi á síðan að beygja á einhvern gefinn hátt.</p>
 
 <p>Möguleiki er á að æfa sig í beygingu í eftirfarandi orðflokkum:
- - Nafnorðum
- - Sagnorðum
- - Lýsingarorðum
+<ul>
+<li>Nafnorðum</li>
+<li>Sagnorðum</li>
+<li>Lýsingarorðum</li>
+</ul>
 
 

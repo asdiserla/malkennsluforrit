@@ -76,7 +76,7 @@ def ord_beyging(ordid, ordfl):
   ord_bm = beygingarmyndir[rand_bm]['b'] # beygingarmynd
   ord_gs = beygingarmyndir[rand_bm]['g'] # greiningarstrengur
 
-  print('RÉTT SVAR SKRRRRT: ', ord_bm, ord_gs)
+ # print('RÉTT SVAR SKRRRRT: ', ord_bm, ord_gs)
   greiningarstr(ord_gs, ordfl)
   return ord_bm, ord_gs
 

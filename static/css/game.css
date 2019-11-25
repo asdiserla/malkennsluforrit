@@ -104,6 +104,16 @@ input:focus {
 }
 
 .feedback a {
-    color: #000000;
+    color: #8bc72d;
     text-decoration: none;
+}
+
+.continue {
+    font-family: 'Open Sans', sans-serif;
+    margin: 3px 0;
+    color: #8bc72d;
+}
+
+.continue:hover {
+    color: #1b1b1b;
 }

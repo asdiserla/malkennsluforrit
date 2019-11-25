@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, request, render_template
-from malkennsla import findWord, rett_rangt, nafnord, greiningarstr, ord_beyging, saekja_rett
+from malkennsla import findWord, wordThatFits, greiningarstr, ord_beyging, saekja_rett
 import csv
 import re
 
@@ -12,7 +12,7 @@ def index():
 @app.route('/no')
 def no():
     ordid = findWord('no')
-    no = nafnord('no', ordid)
+    no = wordThatFits('no', ordid)
     rett_svar = ord_beyging(no, 'no')
     setning = greiningarstr(rett_svar[1], 'no')
     grstrengur = rett_svar[1]
@@ -21,7 +21,7 @@ def no():
 @app.route('/so')
 def so():
     ordid = findWord('so')
-    so = nafnord('so', ordid)
+    so = wordThatFits('so', ordid)
     rett_svar = ord_beyging(so, 'so')
     setning = greiningarstr(rett_svar[1], 'so')
     grstrengur = rett_svar[1]
@@ -30,14 +30,14 @@ def so():
 @app.route('/lo')
 def lo():
     ordid = findWord('lo')
-    lo = nafnord('lo', ordid)
+    lo = wordThatFits('lo', ordid)
     rett_svar = ord_beyging(lo, 'lo')
     setning = greiningarstr(rett_svar[1], 'lo')
     grstrengur = rett_svar[1]
     return render_template('game.html', lysingaro = lo, sent = setning, grstrr = grstrengur, ordfl = 'lo')
 
 @app.route('/submit', methods=['POST'])
-def noun():
+def userAnswer():
     if request.method == 'POST':
         answer = request.form['answer'].lower()
         question = request.form['quest']

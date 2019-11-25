@@ -14,24 +14,23 @@ reglur_lo = {'ESG': 'efsta stigi', 'EVB': 'efsta stigi', 'FSB': 'frumstigi', 'FV
              'MST': 'miðstigi', 'ET': 'eintölu', 'FT': 'fleirtölu', 'NF': 'nefnifalli', 'ÞF': 'þolfalli',
              'ÞGF': 'þágufalli', 'EF': 'eignarfalli', 'HK': 'hvorugkyni', 'KK': 'karlkyni', 'KVK': 'kvenkyni'}
 
+
+# Náum í orðin í orðmyndalistanum og setjum þau í fylki
 with open("ordmyndalisti.txt") as words:
       wordlist = [x.rstrip() for x in words]
 
-with open("sagnord.txt") as words:
-      verblist = [x.rstrip() for x in words]
 
+# Naíum í random orð úr listanum
 def findWord(ordfl):
-  if (ordfl == 'so'):
-    variable = random.choice(verblist)
-  else:
     variable = random.choice(wordlist)
-  return variable
+    return variable
+
 
 # Tekur inn orð ásamt orðflokkinum sem orðið er í
 # Ef orðið er ekki í APA-num (https://bin.arnastofnun.is/api/) eða
-# orðið hefur engar beygingarmyndir skráðar í honum leitum við að 
-# nýju og nýju orði þar til við finnum orð sem uppfyllir þessi tvö skilyrði
-def nafnord(ordfl, variable):
+#   orðið hefur engar beygingarmyndir skráðar í honum leitum við að 
+#   nýju og nýju orði þar til við finnum orð sem uppfyllir þessi tvö skilyrði
+def wordThatFits(ordfl, variable):
   response = requests.get(
     "https://bin.arnastofnun.is/api/ord/{}/{}".format(ordfl, variable))
 
@@ -47,6 +46,7 @@ def nafnord(ordfl, variable):
   rett_ord = response.json()[0]['bmyndir']
   ordid = rett_ord[0]['b']
   return ordid
+
 
 # Tekur inn greiningarstreng og skilar viðeigandi setningu
 def greiningarstr(grst, ordfl):
@@ -64,38 +64,33 @@ def greiningarstr(grst, ordfl):
         strengur += value + " "
     return strengur    
 
+
+# Tekur inn orð og orðflokknum sem orðið er í og skilar beygingunni
+#   á orðinu sem notandi á að giska á
 def ord_beyging(ordid, ordfl):
-  print("FÆ INN: ", ordid)
   response = requests.get(
     "https://bin.arnastofnun.is/api/ord/{}/{}".format(ordfl, ordid))
+
   # Fjöldi beygingarmynda
   fjoldi_bm = len(response.json()[0]['bmyndir'])
-  # Velja random beygingarmynd sem á að fallbeygja
-  rand_bm = random.randint(0, fjoldi_bm - 1)
-  beygingarmyndir = response.json()[0]['bmyndir']
-  ord_bm = beygingarmyndir[rand_bm]['b'] # beygingarmynd
-  ord_gs = beygingarmyndir[rand_bm]['g'] # greiningarstrengur
 
- # print('RÉTT SVAR SKRRRRT: ', ord_bm, ord_gs)
-  greiningarstr(ord_gs, ordfl)
+  # Velja random beygingarmynd sem notandi á að fallbeygja orðið í
+  rand_bm = random.randint(0, fjoldi_bm - 1)
+
+  # Finna allar beygingarmyndir orðsins
+  beygingarmyndir = response.json()[0]['bmyndir']
+  ord_bm = beygingarmyndir[rand_bm]['b']   # Random beygingarmyndin
+  ord_gs = beygingarmyndir[rand_bm]['g']   # Random greiningarstrengurinn
+
   return ord_bm, ord_gs
 
-
+# Sækir réttu beyginguna á orðinu sem notandinn á að beygja
 def saekja_rett(ordid, grst, ordfl):
-    print("FÆ INN I SÆKJA RÉTT: ", ordid, grst)
     response = requests.get(
       "https://bin.arnastofnun.is/api/ord/{}/{}".format(ordfl, ordid))
-    # if ('bmyndir' not in response.json()[0]):
-    #     print("BEYGINGARMYNDIR ERU AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    
     beygingarmyndir = response.json()[0]['bmyndir']
     for i in range(len(beygingarmyndir)):
       if (beygingarmyndir[i]['g'] == grst):
         rett = beygingarmyndir[i]['b']
     return rett
-
-
-def rett_rangt(svar):
-    if (svar == rettasvarid[0]): #TODO setja i breytu
-        return True
-    else:
-        return False

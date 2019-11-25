@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
 </head>
 
 <body>
@@ -15,13 +15,13 @@
       {% endif %}
     </p>
     {% if ordfl == 'no' %}
-    <a href="/no">Halda áfram</a>
+    <a href="/no" class="continue">Halda áfram</a>
     {% elif ordfl == 'so' %}
-    <a href="/so">Halda áfram</a>
+    <a href="/so" class="continue">Halda áfram</a>
     {% elif ordfl == 'lo' %}
-    <a href="/lo">Halda áfram</a>
+    <a href="/lo" class="continue">Halda áfram</a>
     {% endif %}
-    <a href="/">Fara aftur á forsíðu</a>
+    <a href="/" class="continue">Fara aftur á forsíðu</a>
   </div>
 </body>
 

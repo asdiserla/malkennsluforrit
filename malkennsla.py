@@ -77,7 +77,6 @@ def ord_beyging(ordid, ordfl):
   ord_gs = beygingarmyndir[rand_bm]['g'] # greiningarstrengur
 
   print('RÉTT SVAR SKRRRRT: ', ord_bm, ord_gs)
-  #TODO senda inn rétt no so eða lo
   greiningarstr(ord_gs, ordfl)
   return ord_bm, ord_gs
 

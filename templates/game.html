@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+</head>
+
+<body>
+   <div class="container">
+      <label for="answer"> Beygðu
+         {% if ordfl == 'no' %}
+         nafnorðið <b>{{ nafno }}</b>
+         {% elif ordfl == 'so' %}
+         sagnorðið <b>{{ sagno }}</b>
+         {% elif ordfl == 'lo' %}
+         lýsingarorðið <b>{{ lysingaro }}</b>
+         {% endif %}
+         í {{ sent }} </label>
+      <form action="/submit" method="POST">
+         <div class="input">
+            <input type="text" name="answer" />
+            {% if ordfl == 'no' %}
+            <input type="hidden" name="quest" value="{{ nafno }}" />
+            {% elif ordfl == 'so' %}
+            <input type="hidden" name="quest" value="{{ sagno }}" />
+            {% elif ordfl == 'lo' %}
+            <input type="hidden" name="quest" value="{{ lysingaro }}" />
+            {% endif %}
+            <input type="hidden" name="greiningarstrengurinn" value="{{ grstrr }}" />
+            <input type="submit" value="Prófa" class="button" />
+         </div>
+      </form>
+   </div>
+</body>
+
+</html>

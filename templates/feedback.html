@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <p class="feedback">
+      {% if right == False %}
+      Rangt svar, rétt svar er <b>{{ correct }}</b>
+      {% elif right == True %}
+      Rétt svar!
+      {% endif %}
+    </p>
+    {% if ordfl == 'no' %}
+    <a href="/no">Halda áfram</a>
+    {% elif ordfl == 'so' %}
+    <a href="/so">Halda áfram</a>
+    {% elif ordfl == 'lo' %}
+    <a href="/lo">Halda áfram</a>
+    {% endif %}
+    <a href="/">Fara aftur á forsíðu</a>
+  </div>
+</body>
+
+</html>

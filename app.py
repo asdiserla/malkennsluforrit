@@ -38,11 +38,10 @@ def lo():
 
 @app.route('/submit', methods=['POST'])
 def noun():
-    score = 0
     if request.method == 'POST':
-        answer = request.form['answer']
+        answer = request.form['answer'].lower()
         question = request.form['quest']
-        #TODO LOWER, hastafir virkar ekki
+
         gs = request.form['greiningarstrengurinn']
         if (re.search('/no', request.referrer)):
             correctAnswer = saekja_rett(question, gs, 'no')
@@ -65,7 +64,6 @@ def noun():
                 return render_template('feedback.html', correct = correctAnswer, ordfl = 'so', right = False)
             elif (re.search('/lo', request.referrer)):
                 return render_template('feedback.html', correct = correctAnswer, ordfl = 'lo', right = False)
-      #  return render_template('noun.html', rettsvar = x) # ,  nafno = no, sent = setning
 
 if __name__ == '__main__':
    app.run(debug = True)
